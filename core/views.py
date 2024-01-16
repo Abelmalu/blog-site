@@ -34,4 +34,30 @@ def article_create(request):
          form=forms.CreateArticle()
          return render(request,'article_create.html',{'form':form})
     #   return render(request, 'article_create.html')
-      
+
+
+
+def update_article(request, pk):
+    article = Article.objects.get(id=pk)
+    form = forms.CreateArticle(instance=article)
+    if request.method == 'POST':
+        form = forms.CreateArticle(request.POST,instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+              
+          
+
+
+    return render(request, 'article_create.html', {'form':form})
+
+    
+def delete_article(request, pk):
+    article = Article.objects.get(id=pk)
+    if request.method == 'POST':
+        article.delete()
+        return redirect('/')
+    return render(request,'article_delete.html',{'article':article})
+    
+
+

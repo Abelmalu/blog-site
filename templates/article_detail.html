@@ -1,16 +1,25 @@
 
 {% extends 'base_layout.html' %}
+
 {% block content%}
+
 <div class="article-detail">
     <div class="article">
-        <img src="{{article.thumb.url }}" alt="can't load the image">
+        <!-- <img src="{{article.thumb.url }}" alt="can't load the image"> -->
         <h2>{{article.title}}</h2>
         <p>{{article.body}}</p>
         <p>{{article.date}}</p>
         <p>{{article.date}}</p>
+        <p class="author ">added by {{article.author}}</p>
+    {% if request.user.is_authenticated and request.user == article.author %}
 
-        <p class="author">added by {{article.author}}</p>
+       
+        <a href="{% url 'update' article.id %}" class="btn btn-primary">Update</a>
+        <a href="{% url 'delete' article.id %}" class="btn btn-danger">Delete</a>
+    {% endif %}
         
     </div>
+
+  
 </div>
 {% endblock %}

@@ -2,7 +2,7 @@
 {% block content %}
 <div class="create-article">
 <h1>awesome article should be created</h1>
-<form action="{% url 'create' %}" class="site-form" method="POST" enctype="multipart/form-data">
+<form action="" class="site-form" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{form}}
     <input type="submit" value="creates">

@@ -7,11 +7,8 @@ urlpatterns=[
     path('about/',views.about, name='about'),
     path('articles/', views.article_list, name='list'),
     path('articles/create',views.article_create, name='create'),
-   
-
-
-
-
+    path('articles/update<str:pk>',views.update_article, name='update'),
+    path('articles/delete<str:pk>',views.delete_article, name='delete'),
     path('articles/<slug:slug>/',views.article_detail, name='detail')
     
 ]

@@ -9,6 +9,8 @@ django-rename-app = "*"
 pillow = "*"
 whitenoise = "*"
 
+django-bootstrap-v5 = "*"
+
 [dev-packages]
 
 [requires]
