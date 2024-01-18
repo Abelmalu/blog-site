@@ -27,6 +27,9 @@
                         {% csrf_token%}
                         <button type="submit">logout</button>
                     </form>
+                    <li>
+                        <a href="{% url 'profile' %}">Profile</a>
+                    </li>
                 </li>
                 <li>
                     <a href="{% url 'create' %}" class="highlight">new article</a>

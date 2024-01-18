@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Article
+from .models import *
 from django.contrib.auth.decorators import login_required
 from . import forms
+from django.contrib.auth.models import User
 # Create your views here.
 
 def homepage(request):
@@ -28,6 +29,7 @@ def article_create(request):
          if form.is_valid():
              instance = form.save(commit=False)
              instance.author=request.user
+             instance.person = request.user.profile
              instance.save()
              return redirect('list')
      else:
@@ -58,6 +60,21 @@ def delete_article(request, pk):
         article.delete()
         return redirect('/')
     return render(request,'article_delete.html',{'article':article})
+
+
+def profile(request):
+    profile = request.user.profile
+    
+    form = forms.ProfileForm(instance=profile)
     
 
+    if request.method == 'POST':
+        form = forms.ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
 
+            
+
+    
+    
+    return render(request,'profile.html',{'form':form})

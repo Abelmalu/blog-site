@@ -2,16 +2,19 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout
+from  core.models import Profile
 
 def signup_view(request):
     if request.method=='POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user=form.save()
-            login(request,user)
-            #log the user in
-
-            return redirect('list')
+            profile=Profile.objects.create(user=user)
+            return redirect('login')
+        
+            
+            
+            
     else:
 
         form = UserCreationForm()

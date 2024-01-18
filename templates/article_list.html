@@ -1,12 +1,25 @@
 {% extends 'base_layout.html' %}
 {% block content %}
+
+<style>
+    .profile-pic {
+        max-width: 100px;
+        max-height: 100px;
+        margin: 0 auto;
+        
+    }
+</style>
         <h1>article list</h1>
-        <div class="articles">
+        <div class="articles m-3">
             {% for article in articles%}
             <div class="article">
-                <h2><a href="{% url 'detail' slug=article.slug %}">{{article.title}}</a></h2>
+                <img src=" {{article.person.profile_pic.url}} " alt="img not found" class="profile-pic rounded">
+                <h2 class=""><a href="{% url 'detail' slug=article.slug %}">{{article.title}}</a></h2>
                 <p>{{article.snippet}}</p>
                 <p>{{article.date}}</p>
+                
+                
+               
             </div>
             {% endfor %}
         </div>
