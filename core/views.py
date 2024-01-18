@@ -72,9 +72,11 @@ def profile(request):
         form = forms.ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
-
-            
+            return redirect('/')
+    context = {
+        'form':form
+    }       
 
     
     
-    return render(request,'profile.html',{'form':form})
+    return render(request,'profile.html',context)

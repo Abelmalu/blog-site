@@ -11,4 +11,4 @@ class CreateArticle(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = models.Profile
-        fields = ['user','first_name','last_name','profile_pic']
+        fields = ['first_name','last_name','profile_pic']

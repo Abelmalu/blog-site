@@ -3,24 +3,44 @@
 
 <style>
     .profile-pic {
-        max-width: 100px;
-        max-height: 100px;
-        margin: 0 auto;
-        
+        width:100px;
+        height:100px;
+
     }
+    /* .card {
+     /* Light gray */
+    
+        /* } */
+    */
 </style>
-        <h1>article list</h1>
-        <div class="articles m-3">
+       
+        
             {% for article in articles%}
-            <div class="article">
-                <img src=" {{article.person.profile_pic.url}} " alt="img not found" class="profile-pic rounded">
-                <h2 class=""><a href="{% url 'detail' slug=article.slug %}">{{article.title}}</a></h2>
-                <p>{{article.snippet}}</p>
-                <p>{{article.date}}</p>
+            <div class="container">
+                <div class="row justify-content-center">
+       
+                
+                        <div class="col-md-4 col-md-6 bg-white  border border-2 mb-4 ">
+                            
+                                <img src=" {{article.person.profile_pic.url}} " alt="img not found" class="profile-pic rounded-circle" style="display: inline;" >
+                                <div class="" style="display: inline;">
+                        
+                                        <p  class="h4" style="display: inline;">{{article.person}}</p> <br>
+                                        
+                                    
+                                    
+                                    <h2 class="" style="display: inline;" ><a href="{% url 'detail' slug=article.slug %}">{{article.title}}</a></h2>
+                                    <p>{{article.snippet}}</p>
+                                    <p>{{article.date}}</p>
+                                </div>
+
+                        </div>
+                 
+                
                 
                 
                
-            </div>
+            
             {% endfor %}
         </div>
 {% endblock %}

@@ -16,33 +16,48 @@
     <link rel="stylesheet" href="{%% }">
  
 </head>
-<body>
+<body style="background-color: #f5f5f5;">
     <header class="wrapper">
-        <h1><a href="{% url 'home' %}"><img src="{% static 'e_logo.png'%}" alt=""><Article></Article></a></h1>
-        <nav>
-            <ul>
-                {% if user.is_authenticated %}
-                <li>
-                    <form action="{% url 'logout' %}" class="logout-link">
-                        {% csrf_token%}
-                        <button type="submit">logout</button>
-                    </form>
-                    <li>
-                        <a href="{% url 'profile' %}">Profile</a>
-                    </li>
-                </li>
-                <li>
-                    <a href="{% url 'create' %}" class="highlight">new article</a>
-                </li>
-                {% else %}
-                 <li><a href="{% url 'login' %}">Login</a></li>
-                 <li><a href="{% url 'signup' %}">signup</a></li>
-                {% endif %}
-
-
-            </ul> 
+        <h1><Article></Article></a></h1>
+        <nav clas="navbar">
+           
         </nav>
     </header>
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="{% url 'home' %}"><img src="{% static 'e_logo.png'%}" alt="">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul  class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <form action="{% url 'logout' %}" class="logout-link">
+                            {% csrf_token%}
+                            <button type="submit">logout</button>
+                        </form>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'profile' %}">Profile</a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'create' %}" class="nav-link active">new article</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item"><a href="{% url 'login' %}" class="nav-link active">Login</a></li>
+                    <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link active">signup</a></li>
+                    {% endif %}
+                
+                
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="wrapper">
 
         {% block content %}
