@@ -3,8 +3,8 @@
 
 <style>
     .profile-pic {
-        width:100px;
-        height:100px;
+        width:60px;
+        height:60px;
 
     }
     /* .card {
@@ -12,17 +12,19 @@
     
         /* } */
     */
+
 </style>
        
         
-            {% for article in articles%}
+            
             <div class="container">
-                <div class="row justify-content-center">
-       
+                <div class="row justify-content-center g-4" >
+                    {% for article in articles%}
+
                 
-                        <div class="col-md-4 col-md-6 bg-white  border border-2 mb-4 ">
+                        <div class=" col-md-4 col-md-lg-3 m-2 rounded text-light mb-4 " style="background: #0e011b;">
                             
-                                <img src=" {{article.person.profile_pic.url}} " alt="img not found" class="profile-pic rounded-circle" style="display: inline;" >
+                                <img src=" {{article.person.profile_pic.url}} " alt="img not found" class="profile-pic rounded-circle mt-3" style="display: inline;" >
                                 <div class="" style="display: inline;">
                         
                                         <p  class="h4" style="display: inline;">{{article.person}}</p> <br>
