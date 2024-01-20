@@ -15,8 +15,13 @@ def about(request):
     return render(request,'about.html')
 
 def article_list(request):
+    categories = Category.objects.all()
     articles=Article.objects.all().order_by('date')
-    return render(request, 'article_list.html',{'articles':articles})
+    context = {
+        'articles': articles,
+        'categories':categories
+    }
+    return render(request, 'article_list.html',context)
 def article_detail(request,slug):
     article = Article.objects.get(slug=slug)
     return render(request,'article_detail.html', {'article':article})
@@ -80,3 +85,16 @@ def profile(request):
     
     
     return render(request,'profile.html',context)
+
+
+def categories(request,pk):
+
+    category = Category.objects.get(id=pk)
+    articles = category.article_set.all()
+    context = {
+        'category':category,
+        'articles':articles
+    }
+
+
+    return render(request, 'category.html',context)

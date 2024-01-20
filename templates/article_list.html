@@ -18,11 +18,30 @@
         
             
             <div class="container">
-                <div class="row justify-content-center g-4" >
+                <ul class="list-group pb-3">
+                    <li class="list-group-item active" aria-current="true">Categories</li>
+                    {% for category in categories %}
+                        <li class="list-group-item" style="background: #0e011b;" ><a href="{% url 'category' category.id %}">{{category.name}}</a></li>
+
+
+
+                    {% endfor %}
+
+                </ul>
+
+
+                <div class="row justify-content-center pt-5 g-4">
+                
+                
                     {% for article in articles%}
 
+                    
+
+
+
+
                 
-                        <div class=" col-md-4 col-md-lg-3 m-2 rounded text-light mb-4 " style="background: #0e011b;">
+                        <div class=" col-lg-5 m-2 rounded text-light mb-4 " style="background: #0e011b;">
                             
                                 <img src=" {{article.person.profile_pic.url}} " alt="img not found" class="profile-pic rounded-circle mt-3" style="display: inline;" >
                                 <div class="" style="display: inline;">
@@ -44,6 +63,6 @@
                
             
             {% endfor %}
-        </div>
+            
 {% endblock %}
   
