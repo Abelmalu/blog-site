@@ -42,13 +42,13 @@
                 <li class="nav-item">
                     <a class="nav-link text-light" href="{% url 'profile' %}">Profile</a>
                 </li>
-                <li><span class="text-light nav-link">{{request.user}}</span></li>
+                
                 
                 <li class="nav-item">
                     
-                    <a class="nav-link text-light" href="{% url 'logout' %}">Logout</a>
+                    <a class="nav-link text-light " href="{% url 'logout' %}">Logout</a>
                 </li>
-               
+                <li><span class="text-light nav-link px-5">welcome, {{request.user}}</span></li>
                 
                 {% endif %}
 
