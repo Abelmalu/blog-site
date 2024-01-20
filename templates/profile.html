@@ -16,26 +16,31 @@
 
 <br>
 <div class="row">
-    <div class="col-md-3 ">
-        <div class="card card-body  ">
-            <a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Back to Profile</a>
+    <div class="col-md-3  ">
+        <div class="card card-body  " style="background: #0e011b;">
+            <a class="btn btn-warning " href="{% url 'home' %}"> &#8592; Back to Home</a>
             <hr>
-            <h3 style="text-align: center">Account Settings</h3>
+            <p>Current Profile picture</p>
+           
             <hr>
-            <img class="profile-pic" src="{{request.user.profile.profile_pic.url}}" alt="no profile picture choosen">
+            <img class="profile-pic bg-dark" src="{{request.user.profile.profile_pic.url}}" alt="no profile picture choosen">
 
         </div>
     </div>
     <div class="col-md-9">
-        <div class="card card-body">
+        <div class="card card-body" style="background: #0e011b;">
+            <div class="card-title">Edit profile</div>
 
             <form method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 
-                {{form.first_name}}
-                {{form.last_name}}
-                {{form.profile_pic}}
+                {{form.first_name}}<br>
+                <br>
+                {{form.last_name}}<br>
+                <br>
+                {{form.profile_pic}}<br>
+                <br>
 
                 <input class="btn btn-primary" type="submit" name="Update Information">
             </form>
