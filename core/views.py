@@ -4,6 +4,7 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from . import forms
 from django.contrib.auth.models import User
+from django.db.models import Q
 # Create your views here.
 
 def homepage(request):
@@ -15,12 +16,21 @@ def about(request):
     return render(request,'about.html')
 
 def article_list(request):
-    categories = Category.objects.all()
-    articles=Article.objects.all().order_by('date')
+    
+    if 'q' in request.GET:
+        q = request.GET['q'] 
+        multiple_query = Q(Q(title__icontains=q))
+        # articles=Article.objects.filter(title__icontains=q)
+        articles=Article.objects.filter(multiple_query)
+        categories = Category.objects.all()
+    else:
+        categories = Category.objects.all()
+        articles = Article.objects.all().order_by('date')
+
     context = {
-        'articles': articles,
-        'categories':categories
-    }
+            'articles': articles,
+            'categories':categories
+        }
     return render(request, 'article_list.html',context)
 def article_detail(request,slug):
     article = Article.objects.get(slug=slug)
